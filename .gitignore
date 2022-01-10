@@ -1,0 +1,14 @@
+media-encode/*
+
+media-original/*
+
+media-encrypt/*
+
+media-raw-keys/*
+
+media-server/node_modules/
+media-server/server.cert
+media-server/server.key
+media-server/key.pem
+media-server/cert.pem
+media-server/.env
