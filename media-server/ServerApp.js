@@ -5,7 +5,6 @@ const express = require("express");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const helmet = require("helmet");
-const rateLimit = require("express-rate-limit");
 
 const Constants = require("./utils/Constants");
 const Helpers = require("./utils/Helpers");
@@ -24,13 +23,6 @@ const keyHD = fs.readFileSync(path.join(MEDIA_RAW_KEYS_FOLDER, "keyHD.txt"), rea
 
 const ServerApp = express();
 
-const limiter = rateLimit({
-	windowMs: 1 * 60 * 1000,
-	max: 500,
-	standardHeaders: true,
-	legacyHeaders: false,
-});
-
 const corsOptions = {
     origin: Constants.originWhiteList,
     optionsSuccessStatus: 200,
@@ -38,7 +30,6 @@ const corsOptions = {
 }
 
 ServerApp.disable("x-powered-by");
-ServerApp.use(limiter);
 ServerApp.use(cors(corsOptions));
 ServerApp.use(helmet());
 ServerApp.use(express.urlencoded({ extended: true }));

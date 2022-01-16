@@ -1,4 +1,6 @@
 FROM node:12
 WORKDIR /home/ubuntu/media-handling/media-server
 ADD . .
-EXPOSE 5500
+RUN ["npm", "install"]
+EXPOSE 7500
+CMD ["node", "ServerMain.js"]
